@@ -1,15 +1,25 @@
 <template>
   <div id="app" class="app">
     <ThemeController :is-dark="isDark">
+      <div class="navigation">
+        <a @click="redirect({ name: 'timeline' })">
+          Timeline
+        </a>
+        <a @click="redirect({ name: 'login' })">
+          Login
+        </a>
+      </div>
       <div class="hello">
         <h1>Hola mundo</h1>
         <button @click="toggleTheme">Alternar tema</button>
       </div>
+      <router-view />
     </ThemeController>
   </div>
 </template>
 <script>
 import ThemeController from './shared/layouts/ThemeController.vue'
+import router from './state/router'
 
 export default {
   name: 'App',
@@ -25,6 +35,9 @@ export default {
     toggleTheme() {
       this.isDark = !this.isDark;
     },
+    redirect(route) {
+      router.push(route);
+    }
   }
 }
 </script>

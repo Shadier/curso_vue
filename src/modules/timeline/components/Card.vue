@@ -1,0 +1,43 @@
+<template>
+    <div class="card">
+        <div class="content">
+            {{ content }}
+            <br>
+            <time :datetime="datetime">
+                {{ hour }} - {{ date }}
+            </time>
+        </div>
+    </div>
+</template>
+<script>
+import moment from 'moment'
+
+export default {
+    name: 'Card',
+    props: {
+        uid: { type: String, required: true },
+        content: { type: String, required: true },
+        timeAgo: { type: Date, required: true },  
+    },
+    computed: {
+        $moment() {
+            return moment(this.timeAgo);
+        },
+        hour() {
+            return this.$moment.format('h:mm a');
+        },
+        date() {
+            return this.$moment.format('MMM Do YYYY');
+        },
+        datetime() {
+            return this.$moment.toISOString();
+        }
+    },
+    data() {
+        return {
+
+        }
+    },
+
+}
+</script>

@@ -2,7 +2,7 @@
     <div class="timeline">
         <NavBar />
         <div class="container">
-            <Editor placeholder="¿Qué está pasando?" @post="createPost"/>
+            <Editor placeholder="¿Qué está pasando?" :on-post="createPost"/>
             <template v-for="post in posts">
                 <Card :key="post.uid" :uid="post.uid" :content="post.content" :time-ago="post.date" />
             </template>

@@ -1,6 +1,6 @@
 <template>
     <div class="editor">
-        <div class="card">
+        <div class="card mb-4">
             <div class="card-content">
                 <div class="columns">
                     <div class="column">
@@ -9,7 +9,13 @@
                 </div>
                 <div class="columns">
                     <div class="column">
-                        <button :disabled="!message" @click="dispatchPost">Publicar</button>
+                        <Action
+                            type="primary"
+                            :dispatch="dispatchPost"
+                            :is-disabled="!message"
+                        >
+                            Publicar
+                        </Action>
                     </div>        
                 </div>
             </div>
@@ -18,10 +24,16 @@
     
 </template>
 <script>
+import Action from '@/shared/components/Action'
+
 export default {
     name: 'Editor',
+    components: {
+        Action,
+    },
     props: {
         placeholder: { type: String, default: 'Lorem ipsum...' },
+        onPost: { type: Function },
     },
     data() {
         return {
@@ -30,7 +42,7 @@ export default {
     },
     methods: {
         async dispatchPost() {
-            this.$emit('post', this.message);
+            await this.onPost(this.message);
             this.message = '';
         }
     }

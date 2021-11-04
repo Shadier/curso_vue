@@ -1,11 +1,15 @@
 <template>
     <div class="card">
-        <div class="content">
-            {{ content }}
-            <br>
-            <time :datetime="datetime">
-                {{ hour }} - {{ date }}
-            </time>
+        <div class="card animated fadeInDown">
+            <div class="card-content">
+                <div class="content">
+                    {{ content }}
+                    <br>
+                    <time class="has-text-grey" :datetime="datetime">
+                        {{ hour }} - {{ date }}
+                    </time>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -41,3 +45,10 @@ export default {
 
 }
 </script>
+<style lang="scss" scoped>
+.card {
+    time {
+        font-size: 0.8em;
+    }
+}
+</style>

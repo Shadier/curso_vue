@@ -1,8 +1,21 @@
 <template>
-    <div>
-        <textarea v-model="message" :placeholder="placeholder"></textarea>
-        <button @click="dispatchPost">Publicar</button>
+    <div class="editor">
+        <div class="card">
+            <div class="card-content">
+                <div class="columns">
+                    <div class="column">
+                        <textarea class="textarea" v-model="message" :placeholder="placeholder"></textarea>
+                    </div>        
+                </div>
+                <div class="columns">
+                    <div class="column">
+                        <button :disabled="!message" @click="dispatchPost">Publicar</button>
+                    </div>        
+                </div>
+            </div>
+        </div>
     </div>
+    
 </template>
 <script>
 export default {
@@ -23,3 +36,6 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+
+</style>
